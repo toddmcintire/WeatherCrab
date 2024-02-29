@@ -51,7 +51,6 @@ struct Output {
     wind_speed: String,
     wind_direction: String,
     short_forecast: ShortForecast,
-    //test_enum: ShortForecast,
 }
 
 //TODO add other possible weather enums(add to impl below and impl for myapp)
@@ -122,28 +121,12 @@ impl eframe::App for MyApp {
             });
 
 
-            //TODO
+            //TODO figure out style
             if self.data.is_day_time {
                 ui.style_mut().visuals = Visuals::light();
             } else {
                 ui.style_mut().visuals = Visuals::dark();
             }
-
-
-            // ui.horizontal(|ui| {
-            //     let name_label = ui.label("Your name: ");
-            //     ui.text_edit_singleline(&mut self.name)
-            //         .labelled_by(name_label.id);
-            // });
-            // ui.add(egui::Slider::new(&mut self.age, 0..=120).text("age"));
-            // if ui.button("Increment").clicked() {
-            //     self.age += 1;
-            // }
-            // ui.label(format!("Hello '{}', age {}", self.name, self.age));
-
-            // ui.image(egui::include_image!(
-            //     "../../../crates/egui/assets/ferris.png"
-            // ));
         });
     }
 }
@@ -170,7 +153,6 @@ fn main() -> Result<(), eframe::Error>{
         humidity_percent: (body2["properties"]["periods"][0]["relativeHumidity"]["value"]).as_u64().expect("err"),
         wind_speed: (body2["properties"]["periods"][0]["windSpeed"]).to_string(),
         wind_direction: (body2["properties"]["periods"][0]["windDirection"]).to_string(),
-        //short_forecast: (body2["properties"]["periods"][0]["shortForecast"]).to_string(),
         short_forecast: FromStr::from_str(&(body2["properties"]["periods"][0]["shortForecast"]).to_string()).unwrap()
     };
 
