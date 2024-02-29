@@ -1,5 +1,6 @@
 # WeatherCrab
 WeatherCrab is a lightweight weather app that relies on the [NOAA API](https://www.weather.gov/documentation/services-web-api).
+![](Screenshot%202024-02-29%20at%2004.15.35.png)
 
 ## Features
 - **Lightweight**: Built in Rust
