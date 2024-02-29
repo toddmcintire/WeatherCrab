@@ -54,7 +54,7 @@ struct Output {
     //test_enum: ShortForecast,
 }
 
-//TODO add other enums(add to impl below)
+//TODO add other possible weather enums(add to impl below and impl for myapp)
 #[derive(Debug)]
 enum ShortForecast {
     Sunny,
@@ -101,8 +101,12 @@ impl eframe::App for MyApp {
 
             //TODO change outputs to pictures
             match self.data.short_forecast {
-                ShortForecast::Clear => ui.add(egui::Image::new(egui::include_image!("sun.png")).max_height(32.0).max_width(32.0)),
-                _ => todo!(),
+                ShortForecast::Clear => ui.add(egui::Image::new(egui::include_image!("misty.png")).max_height(32.0).max_width(32.0)),
+                ShortForecast::Sunny => ui.add(egui::Image::new(egui::include_image!("sun.png")).max_height(32.0).max_width(32.0)),
+                ShortForecast::PartlyCloudy => ui.add(egui::Image::new(egui::include_image!("cloud.png")).max_height(32.0).max_width(32.0)),
+                ShortForecast::MostlyCloudy => ui.add(egui::Image::new(egui::include_image!("cloud-2.png")).max_height(32.0).max_width(32.0)),
+                ShortForecast::PartlySunny => ui.add(egui::Image::new(egui::include_image!("cloudy.png")).max_height(32.0).max_width(32.0)),
+                ShortForecast::MostlySunny => ui.add(egui::Image::new(egui::include_image!("sun-2.png")).max_height(32.0).max_width(32.0)),
             };
 
             //ui.label(format!("{}", self.data.short_forcast));
